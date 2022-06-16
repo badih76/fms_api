@@ -29,30 +29,34 @@ router.use(bodyParser.json());
 
 router.get('/healthCheck',async (req: express.Request, res: express.Response) => {
     res.send(connOptions);
-//     connectionPool.query('SELECT * FROM dependencies WHERE dbParamName = \'HostName\'', 
-//         function (error: mysql.MysqlError, results) {
-//             try {
-//                 if (error) throw error;
+    try {
+        connectionPool.query('SELECT * FROM dependencies WHERE dbParamName = \'HostName\'', 
+            function (error: mysql.MysqlError, results) {
+                try {
+                    if (error) throw error;
 
-//                 let docs: object[] = [];
-//                 results.map(d => {
-//                     docs.push(d);    
-//                 });
+                    let docs: object[] = [];
+                    results.map(d => {
+                        docs.push(d);    
+                    });
 
-//                 let result: Result = {
-//                     resultStatus: 200,
-//                     resultDesc: "Successful",
-//                     resultReturn: docs,
-//                     errorDesc: null
-//                 }
+                    let result: Result = {
+                        resultStatus: 200,
+                        resultDesc: "Successful",
+                        resultReturn: docs,
+                        errorDesc: null
+                    }
 
-//                 res.send(result);
-//             }
-//             catch(err) {
-//                 res.send(err);
-//             }
-            
-//     });
+                    res.send(result);
+                }
+                catch(err) {
+                    res.send(err);
+                }
+
+        });
+    catch(err) {
+        res.send({error: err});
+    }
 });
 
 router.get('/', async (req: express.Request, res: express.Response) => { 
