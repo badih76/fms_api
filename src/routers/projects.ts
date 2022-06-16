@@ -28,7 +28,7 @@ router.use(bodyParser.json());
 
 
 router.get('/healthCheck',async (req: express.Request, res: express.Response) => {
-    res.send(connOptions);
+    // res.send(connOptions);
     try {
         connectionPool.query('SELECT * FROM dependencies WHERE dbParamName = \'HostName\'', 
             function (error: mysql.MysqlError, results) {
