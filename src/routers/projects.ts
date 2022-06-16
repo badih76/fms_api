@@ -54,6 +54,7 @@ router.get('/healthCheck',async (req: express.Request, res: express.Response) =>
                 }
 
         });
+    }
     catch(err) {
         res.send({error: err});
     }
