@@ -12,7 +12,7 @@ import migrateRouter from './routers/migrate/migrate';
 import { send } from 'process';
 
 const app: Application = express();
-const port: number = 3000;
+const port: number = parseInt(process.env.PORT!) || 3000;
 
 app.use('/clients', clients);
 app.use('/maintenance/poolreadings', maintPR);
