@@ -32,7 +32,7 @@ router.get('/healthCheck',async (req: express.Request, res: express.Response) =>
     console.log('############ Starting Health Check ############');
     try {
         console.log('############ Trying to connect to DB ############');
-        console.log('connOptions');
+        console.log(connOptions);
         connectionPool.query('SELECT * FROM dependencies WHERE dbParamName = \'HostName\'', 
             function (error: mysql.MysqlError, results) {
                 console.log('############ Inside Query Callback ############');
