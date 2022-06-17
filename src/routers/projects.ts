@@ -6,7 +6,7 @@ import * as mysql from 'mysql';
 import sha1 from 'sha1';
 
 const connOptions = {
-    connectionLimit: 10 //parseInt(<string>process.env.connectionLimit),
+    connectionLimit: 10, //parseInt(<string>process.env.connectionLimit),
     host: process.env.DBHOST,
     user: process.env.DBUSER,
     password: process.env.DBPASSWORD,
