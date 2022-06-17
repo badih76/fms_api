@@ -29,12 +29,16 @@ router.use(bodyParser.json());
 
 router.get('/healthCheck',async (req: express.Request, res: express.Response) => {
     // res.send(connOptions);
+    console.log('############ Starting Health Check ############');
     try {
+        console.log('############ Trying to connect to DB ############');
+        console.log('connOptions');
         connectionPool.query('SELECT * FROM dependencies WHERE dbParamName = \'HostName\'', 
             function (error: mysql.MysqlError, results) {
+                console.log('############ Inside Query Callback ############');
                 try {
                     if (error) throw error;
-
+                    console.log('############ Inside Query Callback Try ############');
                     let docs: object[] = [];
                     results.map(d => {
                         docs.push(d);    
