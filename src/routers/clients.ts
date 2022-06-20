@@ -28,6 +28,7 @@ router.use(bodyParser.json());
 
 router.get('/', (req: express.Request, res: express.Response) => { 
     // get all clients
+    console.log(process.env.connectionLimit, parseInt(<string>process.env.connectionLimit));
     console.log(connOptions);
     
     connectionPool.query('SELECT clID, clName FROM clients', 
